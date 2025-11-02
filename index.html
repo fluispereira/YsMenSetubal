@@ -33,9 +33,11 @@
     a{color:inherit;text-decoration:none}
 
     /* language visibility control */
-    [data-lang]{display:none;}
-    html[data-active-lang="en"] [data-lang="en"]{display:initial;}
-    html[data-active-lang="pt"] [data-lang="pt"]{display:initial;}
+    [data-lang]{display:none !important;}
+    html[data-active-lang="en"] [data-lang="en"],
+    html[data-active-lang="pt"] [data-lang="pt"]{
+      display:unset !important;
+    }
 
     header{
       background:var(--bg-dark);
@@ -223,10 +225,21 @@
       margin:0 auto;
       padding:4rem 1.25rem;
       scroll-margin-top:var(--sticky-offset);
+      position:relative;
+    }
+    .section::before{
+      content:"";
+      display:block;
+      height:var(--sticky-offset);
+      margin-top:calc(-1 * var(--sticky-offset));
     }
     .section-header{
-      max-width:700px;
+      max-width:1200px;
       margin-bottom:2rem;
+      background:#ffffff;
+      padding:2rem;
+      border-radius:var(--radius-xl);
+      box-shadow:0 20px 40px -16px rgba(15,23,42,.12);
     }
     .eyebrow{
       font-size:.7rem;
@@ -247,7 +260,7 @@
       line-height:1.2;
       font-weight:600;
       margin-top:.75rem;
-      color:var(--text-dark);
+      color:var(--bg-dark);
     }
     .section-header p.lead{
       font-size:1rem;
@@ -300,6 +313,39 @@
       line-height:1.5;
       color:var(--text-muted);
       margin-top:.5rem;
+    }
+
+    .gallery-grid{
+      display:grid;
+      gap:1.5rem;
+    }
+    @media(min-width:700px){
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius-xl);
+      box-shadow:0 24px 40px -12px rgba(15,23,42,.18);
+    }
+    .gallery-item img{
+      width:100%;
+      display:block;
+      height:auto;
+      object-fit:cover;
+    }
+    .gallery-item figcaption{
+      position:absolute;
+      inset:auto 1rem 1rem 1rem;
+      padding:.75rem 1rem;
+      background:rgba(15,23,42,.7);
+      color:var(--text-light);
+      border-radius:var(--radius-lg);
+      font-size:.9rem;
+      line-height:1.3;
+      backdrop-filter:blur(6px);
     }
 
     /* JOIN CALL TO ACTION */
@@ -487,10 +533,14 @@
   <header class="section-header">
     <span class="eyebrow" data-lang="en">Who we are</span>
     <span class="eyebrow" data-lang="pt">Quem Somos</span>
+    
+    <br/><br/>
 
     <h2 data-lang="en">Y Service Club Setúbal</h2>
     <h2 data-lang="pt">Y Service Club Setúbal</h2>
-
+    
+    <br/>
+    
     <p class="lead" data-lang="en">
       We are part of Y's Men International — a worldwide fellowship of people of all faiths working together
       in mutual respect and affection, based on the teachings of Jesus Christ, and with a common loyalty
@@ -557,10 +607,14 @@
   <header class="section-header">
     <span class="eyebrow" data-lang="en">Mission & Values</span>
     <span class="eyebrow" data-lang="pt">Missão e Valores</span>
-
+    
+    <br/><br/>
+    
     <h2 data-lang="en">What we stand for</h2>
     <h2 data-lang="pt">Em que acreditamos</h2>
-
+    
+    <br/>
+    
     <p class="lead" data-lang="en">
       Our work is rooted in service, inspired by faith, and focused on people. These are the principles every
       member commits to when joining the club:
@@ -619,15 +673,54 @@
   </div>
 </section>
 
+<!-- SETUBAL GALLERY -->
+<section class="section" id="setubal">
+  <header class="section-header">
+    <span class="eyebrow" data-lang="en">City Highlights</span>
+    <span class="eyebrow" data-lang="pt">Destaques da Cidade</span>
+
+    <h2 data-lang="en">Scenes from Setúbal</h2>
+    <h2 data-lang="pt">Cenas de Setúbal</h2>
+
+    <p class="lead" data-lang="en">
+      A glimpse of the coastline and downtown that inspire our club's work with the local community.
+    </p>
+    <p class="lead" data-lang="pt">
+      Um olhar sobre a costa e a cidade que inspiram o nosso trabalho na comunidade local.
+    </p>
+  </header>
+
+  <div class="gallery-grid">
+    <figure class="gallery-item">
+      <img src="images/setubal-hd.jpg" alt="View over Setubal bay at sunset" />
+      <figcaption>
+        <span data-lang="en">Praça do Bocage</span>
+        <span data-lang="pt">Praça do Bocage</span>
+      </figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="images/setubal-baia-noite.jpg" alt="Setubal waterfront illuminated at night" />
+      <figcaption>
+        <span data-lang="en">Setúbal Bay at sunset.</span>
+        <span data-lang="pt">Baía de Setúbal ao entardecer.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section class="section" id="projects">
   <header class="section-header">
     <span class="eyebrow" data-lang="en">Service in action</span>
     <span class="eyebrow" data-lang="pt">Serviço em ação</span>
 
+    <br/><br/>
+    
     <h2 data-lang="en">What we do</h2>
     <h2 data-lang="pt">O que fazemos</h2>
-
+    
+    <br/>
+    
     <p class="lead" data-lang="en">
       We exist to serve. Every project is meant to make life better for someone — a young person, a family,
       a community group. These are our core objectives:
@@ -707,8 +800,12 @@
     <span class="eyebrow" data-lang="en">Become a member</span>
     <span class="eyebrow" data-lang="pt">Torne-se membro</span>
 
+    <br/><br/>
+    
     <h2 data-lang="en">Ready to get involved?</h2>
     <h2 data-lang="pt">Quer fazer parte?</h2>
+
+    <br/>
 
     <p class="lead" data-lang="en">
       We are looking for committed, positive people who want to make a real difference in Setúbal —
