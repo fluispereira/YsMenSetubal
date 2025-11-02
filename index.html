@@ -62,21 +62,9 @@
       width:40px;
       height:40px;
       border-radius:var(--radius-lg);
-      background:radial-gradient(circle at 30% 30%,var(--accent-gold)0%,#704f00 60%);
-      position:relative;
+      object-fit:cover;
       box-shadow:0 12px 24px rgba(0,0,0,.6);
       flex-shrink:0;
-    }
-    .brand-logo::after{
-      content:"Y";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--bg-dark);
-      font-weight:700;
-      font-family:"Arial Black",system-ui,sans-serif;
     }
     nav.primary-nav ul{
       display:flex;
@@ -389,7 +377,7 @@
   <div class="nav-shell">
 
     <div class="brand">
-      <div class="brand-logo" aria-hidden="true"></div>
+      <img class="brand-logo" src="images/logo.jpg" alt="Y Service Club Setúbal logo" />
       <div class="brand-text">
         <div style="font-weight:600; line-height:1.2;">
           Y's Men / Y's Women Setúbal
@@ -416,8 +404,8 @@
     </nav>
 
     <div class="lang-switcher" aria-label="Language selector">
-      <button class="lang-btn" data-set-lang="en">EN</button>
       <button class="lang-btn" data-set-lang="pt">PT</button>
+      <button class="lang-btn" data-set-lang="en">EN</button>
     </div>
 
   </div>
