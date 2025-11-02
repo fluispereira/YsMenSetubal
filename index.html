@@ -1,1110 +1,826 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt" data-active-lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Y Service Club Setúbal</title>
-  <meta name="description" content="Y Service Club Setúbal – service in action for the YMCA and the community in Setúbal." />
-
+  <title>Y's Men / Y's Women Setúbal</title>
+  <meta name="description" content="Y's Men / Y's Women Setúbal – service and action alongside the YMCA and the Setúbal community." />
   <style>
     :root {
-      --bg-dark: #0f172a;        /* deep navy */
-      --bg-light: #ffffff;
-      --accent-red: #c91f2e;     /* emblem red triangle */
-      --accent-blue: #003b8e;    /* emblem blue Y */
-      --accent-gold: #d4a017;    /* emblem golden star */
-      --text-dark: #0f172a;
-      --text-light: #f8fafc;
-      --text-muted: #64748b;
-      --radius-xl: 1.25rem;
-      --radius-lg: .75rem;
-      --radius-full: 999px;
-      --max-width: 1200px;
+      --bg-dark:#0f172a;
+      --bg-light:#ffffff;
+      --accent-red:#c91f2e;
+      --accent-blue:#003b8e;
+      --accent-gold:#d4a017;
+      --text-dark:#0f172a;
+      --text-light:#f8fafc;
+      --text-muted:#64748b;
+      --radius-xl:1.25rem;
+      --radius-lg:.75rem;
+      --radius-full:999px;
+      --max-width:1200px;
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,"Inter",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:var(--bg-light);
+      color:var(--text-dark);
+      line-height:1.5;
     }
+    a{color:inherit;text-decoration:none}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.5;
+    /* language visibility control */
+    [data-lang]{display:none;}
+    html[data-active-lang="en"] [data-lang="en"]{display:initial;}
+    html[data-active-lang="pt"] [data-lang="pt"]{display:initial;}
+
+    header{
+      background:var(--bg-dark);
+      color:var(--text-light);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      position:sticky;
+      top:0;
+      z-index:1000;
     }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+    .nav-shell{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:1rem 1.25rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      row-gap:1rem;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
     }
-
-    header {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    .brand-logo{
+      width:40px;
+      height:40px;
+      border-radius:var(--radius-lg);
+      background:radial-gradient(circle at 30% 30%,var(--accent-gold)0%,#704f00 60%);
+      position:relative;
+      box-shadow:0 12px 24px rgba(0,0,0,.6);
+      flex-shrink:0;
     }
-
-    .nav-shell {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .brand-logo::after{
+      content:"Y";
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--bg-dark);
+      font-weight:700;
+      font-family:"Arial Black",system-ui,sans-serif;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--text-light);
+    nav.primary-nav ul{
+      display:flex;
+      gap:1.5rem;
+      list-style:none;
+      font-weight:500;
+      flex-wrap:wrap;
     }
-
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: radial-gradient(circle at 30% 30%, var(--accent-gold) 0%, #704f00 60%);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 700;
-      line-height: 40px;
-      text-align: center;
-      border-radius: var(--radius-lg);
-      position: relative;
-      box-shadow: 0 12px 24px rgba(0,0,0,.6);
+    nav.primary-nav a{
+      color:var(--text-light);
+      opacity:.9;
+      font-size:.9rem;
     }
+    nav.primary-nav a:hover{opacity:1;}
 
-    .brand-logo:after {
-      content: "Y";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Arial Black", Impact, system-ui, sans-serif;
-      color: var(--bg-dark);
-      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    /* language switcher */
+    .lang-switcher{
+      display:flex;
+      gap:.5rem;
+      align-items:center;
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--text-light);
+    .lang-btn{
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.15);
+      color:#fff;
+      font-size:.7rem;
+      line-height:1.1;
+      font-weight:600;
+      border-radius:var(--radius-full);
+      padding:.4rem .6rem;
+      cursor:pointer;
+      min-width:2.5rem;
+      text-align:center;
     }
-
-    nav a {
-      color: var(--text-light);
-      opacity: .9;
-      transition: opacity .15s;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: var(--radius-lg);
-      padding: .5rem .75rem;
-      font-size: .8rem;
-      font-weight: 500;
-      line-height: 1;
-      color: var(--text-light);
-    }
-
-    /* mobile menu panel */
-    .mobile-panel {
-      display: none;
-      background-color: var(--bg-dark);
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
-    .mobile-panel ul {
-      list-style: none;
-      display: grid;
-      padding: 1rem 1.25rem 1.5rem;
-      gap: 1rem;
-    }
-
-    .mobile-panel a {
-      display: block;
-      color: var(--text-light);
-      font-size: 1rem;
-      font-weight: 500;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius-lg);
-      padding: .9rem 1rem;
+    .lang-btn.active{
+      background:var(--accent-red);
+      border-color:var(--accent-red);
+      box-shadow:0 16px 24px rgba(201,31,46,.4);
     }
 
     /* HERO */
-    .hero {
-      background: radial-gradient(circle at 20% 20%, rgba(201,31,46,.12) 0%, rgba(15,23,42,0) 60%),
-                  radial-gradient(circle at 80% 30%, rgba(0,59,142,.18) 0%, rgba(15,23,42,0) 60%),
-                  var(--bg-dark);
-      color: var(--text-light);
-      padding: 4rem 1.25rem 5rem;
+    .hero{
+      background:
+        radial-gradient(circle at 20% 20%,rgba(201,31,46,.12)0%,rgba(15,23,42,0)60%),
+        radial-gradient(circle at 80% 30%,rgba(0,59,142,.18)0%,rgba(15,23,42,0)60%),
+        var(--bg-dark);
+      color:var(--text-light);
+      padding:4rem 1.25rem 5rem;
     }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      gap: 3rem;
+    .hero-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:grid;
+      gap:3rem;
     }
-
-    @media(min-width: 900px){
-      .hero-inner {
-        grid-template-columns: minmax(0,1fr) minmax(0,480px);
-        align-items: center;
+    @media(min-width:900px){
+      .hero-inner{
+        grid-template-columns:1fr 480px;
+        align-items:center;
       }
     }
-
-    .hero-pretitle {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: var(--radius-full);
-      padding: .4rem .75rem;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      width: fit-content;
+    .hero-pretitle{
+      display:inline-flex;
+      gap:.5rem;
+      align-items:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:var(--radius-full);
+      padding:.4rem .75rem;
+      font-size:.7rem;
+      font-weight:600;
+      text-transform:uppercase;
+      line-height:1.2;
+    }
+    .hero-pretitle .tag{
+      background:var(--accent-red);
+      color:#fff;
+      border-radius:var(--radius-full);
+      padding:.25rem .5rem;
+      font-size:.65rem;
+      line-height:1.1;
+      font-weight:700;
+    }
+    .hero h1{
+      font-size:clamp(2rem,2.4vw + 1.4rem,2.75rem);
+      line-height:1.15;
+      font-weight:600;
+      margin-top:1rem;
+      color:var(--text-light);
+    }
+    .hero h1 .accent{color:var(--accent-gold);}
+    .hero-desc{
+      margin-top:1rem;
+      max-width:50ch;
+      color:rgba(255,255,255,.8);
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .btn-primary,.btn-outline{
+      border-radius:var(--radius-full);
+      padding:.8rem 1.2rem;
+      font-weight:600;
+      font-size:.9rem;
+      line-height:1.1;
+      text-align:center;
+      min-width:160px;
+    }
+    .btn-primary{
+      background:var(--accent-red);
+      color:#fff;
+      box-shadow:0 20px 32px rgba(201,31,46,.4);
+    }
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.4);
+      color:#fff;
+      background:transparent;
+    }
+    .hero-card{
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:var(--radius-xl);
+      padding:1.5rem;
+      box-shadow:0 24px 48px rgba(0,0,0,.8);
+    }
+    .hero-card h2{
+      font-size:1rem;
+      font-weight:600;
+      line-height:1.4;
+      color:#fff;
+    }
+    .motto{
+      color:var(--accent-gold);
+      border-left:3px solid var(--accent-gold);
+      padding-left:.75rem;
+      margin-top:.5rem;
+      font-weight:500;
+    }
+    .hero-card p{
+      margin-top:1rem;
+      font-size:.9rem;
+      line-height:1.5;
+      color:rgba(255,255,255,.8);
     }
 
-    .hero-pretitle span.tag {
-      background: var(--accent-red);
-      color: #fff;
-      border-radius: var(--radius-full);
-      padding: .25rem .5rem;
-      line-height: 1.1;
-      font-size: .65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
+    /* SECTIONS */
+    .section{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:4rem 1.25rem;
+    }
+    .section-header{
+      max-width:700px;
+      margin-bottom:2rem;
+    }
+    .eyebrow{
+      font-size:.7rem;
+      font-weight:600;
+      line-height:1.2;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--accent-blue);
+      background:rgba(0,59,142,.08);
+      border:1px solid rgba(0,59,142,.16);
+      padding:.4rem .6rem;
+      border-radius:var(--radius-full);
+      display:inline-block;
+      width:max-content;
+    }
+    .section-header h2{
+      font-size:clamp(1.4rem,1.2vw+1rem,1.75rem);
+      line-height:1.2;
+      font-weight:600;
+      margin-top:.75rem;
+      color:var(--text-dark);
+    }
+    .section-header p.lead{
+      font-size:1rem;
+      line-height:1.6;
+      color:var(--text-muted);
+      margin-top:.75rem;
+      max-width:60ch;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 2.4vw + 1.4rem, 2.75rem);
-      line-height: 1.15;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-top: 1rem;
+    .about-grid{
+      display:grid;
+      gap:2rem;
     }
-
-    .hero h1 .accent {
-      color: var(--accent-gold);
-    }
-
-    .hero-desc {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,.8);
-      margin-top: 1rem;
-      max-width: 50ch;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem 1rem;
-      margin-top: 2rem;
-    }
-
-    .btn-primary {
-      background: var(--accent-red);
-      color: #fff;
-      border: 0;
-      border-radius: var(--radius-full);
-      padding: .8rem 1.2rem;
-      font-size: .9rem;
-      font-weight: 600;
-      line-height: 1.1;
-      box-shadow: 0 20px 32px rgba(201,31,46,.4);
-    }
-
-    .btn-outline {
-      background: rgba(255,255,255,0);
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255,255,255,.4);
-      color: #fff;
-      padding: .8rem 1.2rem;
-      font-size: .9rem;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: var(--radius-xl);
-      padding: 1.5rem 1.5rem 1.25rem;
-      box-shadow: 0 24px 48px rgba(0,0,0,.8);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .hero-card h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.4;
-      color: var(--text-light);
-    }
-
-    .hero-card .card-body {
-      font-size: .9rem;
-      line-height: 1.5;
-      color: rgba(255,255,255,.8);
-    }
-
-    .hero-card .motto {
-      font-size: .8rem;
-      line-height: 1.4;
-      font-weight: 500;
-      color: var(--accent-gold);
-      border-left: 3px solid var(--accent-gold);
-      padding-left: .75rem;
-    }
-
-    /* SECTION SHELLS */
-    .section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 4rem 1.25rem;
-    }
-
-    .section-header {
-      max-width: 700px;
-      margin-bottom: 2rem;
-    }
-
-    .eyebrow {
-      font-size: .7rem;
-      font-weight: 600;
-      line-height: 1.2;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--accent-blue);
-      display: inline-block;
-      background: rgba(0,59,142,.08);
-      border: 1px solid rgba(0,59,142,.16);
-      padding: .4rem .6rem;
-      border-radius: var(--radius-full);
-    }
-
-    .section-header h2 {
-      font-size: clamp(1.4rem, 1.2vw + 1rem, 1.75rem);
-      line-height: 1.2;
-      font-weight: 600;
-      margin-top: .75rem;
-      color: var(--text-dark);
-    }
-
-    .section-header p.lead {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-top: .75rem;
-      max-width: 60ch;
-    }
-
-    /* ABOUT / MISSION GRID */
-    .about-grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media(min-width: 800px){
-      .about-grid {
-        grid-template-columns: repeat(3,1fr);
+    @media(min-width:800px){
+      .about-grid{
+        grid-template-columns:repeat(3,1fr);
       }
     }
-
-    .about-card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: var(--radius-xl);
-      padding: 1.5rem 1.5rem 1.25rem;
+    .about-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:var(--radius-xl);
+      padding:1.5rem;
       box-shadow:
         0 24px 40px -8px rgba(15,23,42,.08),
         0 2px 4px rgba(15,23,42,.06);
-      display: grid;
-      gap: .75rem;
+    }
+    .about-icon{
+      width:42px;
+      height:42px;
+      border-radius:.5rem;
+      background:var(--accent-blue);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.8rem;
+      font-weight:600;
+      box-shadow:0 16px 24px rgba(0,59,142,.3);
+    }
+    .about-card h3{
+      margin-top:.75rem;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--text-dark);
+      line-height:1.4;
+    }
+    .about-card p{
+      font-size:.9rem;
+      line-height:1.5;
+      color:var(--text-muted);
+      margin-top:.5rem;
     }
 
-    .about-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at 30% 30%, var(--accent-blue) 0%, #000a1a 70%);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 600;
-      line-height: 42px;
-      text-align: center;
-      box-shadow: 0 16px 24px rgba(0,59,142,.3);
+    /* JOIN CALL TO ACTION */
+    .about-card.highlight{
+      border:2px solid var(--accent-red);
+      box-shadow:0 24px 40px -8px rgba(201,31,46,.15),
+                 0 2px 4px rgba(201,31,46,.2);
+    }
+    .about-card.highlight h3{
+      color:var(--accent-red);
+    }
+    .about-card.highlight a{
+      color:var(--accent-blue);
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:600;
     }
 
-    .about-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      line-height: 1.4;
+    /* FOOTER */
+    footer{
+      background:var(--bg-dark);
+      color:var(--text-light);
+      margin-top:4rem;
+      padding:3rem 1.25rem 4rem;
     }
-
-    .about-card p {
-      font-size: .9rem;
-      line-height: 1.5;
-      color: var(--text-muted);
+    .footer-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:grid;
+      gap:2rem;
     }
-
-    /* PROJECTS / IMPACT */
-    .projects-wrapper {
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media(min-width: 900px){
-      .projects-wrapper {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
+    @media(min-width:800px){
+      .footer-inner{
+        grid-template-columns:2fr 1fr;
       }
     }
-
-    .projects-list {
-      display: grid;
-      gap: 1rem;
+    footer h3{
+      font-size:1rem;
+      line-height:1.4;
+      font-weight:600;
+      color:#fff;
+      margin-bottom:.5rem;
     }
-
-    .project-item {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: var(--radius-lg);
-      padding: 1rem 1.25rem 1rem;
-      box-shadow: 0 20px 32px -8px rgba(15,23,42,.06);
+    footer p{
+      font-size:.8rem;
+      line-height:1.5;
+      color:rgba(255,255,255,.7);
+      max-width:60ch;
+      margin-bottom:1rem;
     }
-
-    .project-item h4 {
-      font-size: .95rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      line-height: 1.4;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .5rem;
+    .footer-contact h4{
+      font-size:.8rem;
+      line-height:1.4;
+      font-weight:600;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:.75rem;
     }
-    .badge {
-      background: var(--accent-red);
-      color: #fff;
-      font-size: .6rem;
-      line-height: 1.2;
-      font-weight: 600;
-      padding: .3rem .5rem;
-      border-radius: var(--radius-full);
-      letter-spacing: .03em;
-      text-transform: uppercase;
-      box-shadow: 0 16px 24px rgba(201,31,46,.3);
+    .footer-contact a.mail{
+      color:var(--accent-gold);
+      font-weight:500;
+      text-decoration:underline;
+      text-underline-offset:2px;
     }
-
-    .project-item p {
-      font-size: .85rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin-top: .5rem;
-    }
-
-    .projects-sidecard {
-      background: var(--bg-dark);
-      color: var(--text-light);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 1.5rem 1.5rem 1.25rem;
-      box-shadow: 0 32px 48px rgba(0,0,0,.6);
-    }
-
-    .projects-sidecard h3 {
-      font-size: 1rem;
-      line-height: 1.4;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .projects-sidecard p {
-      font-size: .9rem;
-      line-height: 1.5;
-      color: rgba(255,255,255,.8);
-      margin-top: .75rem;
-    }
-
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .stat-box {
-      flex: 1 1 120px;
-      min-width: 120px;
-    }
-
-    .stat-number {
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--accent-gold);
-    }
-
-    .stat-label {
-      font-size: .7rem;
-      line-height: 1.3;
-      color: rgba(255,255,255,.7);
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      font-weight: 500;
-      margin-top: .4rem;
-    }
-
-    /* JOIN / CALL TO ACTION */
-    .join-area {
-      background: linear-gradient(
-        135deg,
-        rgba(0,59,142,.08) 0%,
-        rgba(201,31,46,.08) 100%
-      );
-      border: 1px solid rgba(15,23,42,.08);
-      border-radius: var(--radius-xl);
-      padding: 2rem 1.5rem;
-      box-shadow:
-        0 32px 48px -8px rgba(15,23,42,.08),
-        0 2px 4px rgba(15,23,42,.06);
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media(min-width: 800px){
-      .join-area {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-      }
-    }
-
-    .join-text h3 {
-      font-size: 1.1rem;
-      line-height: 1.3;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .join-text p {
-      font-size: .9rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin-top: .5rem;
-      max-width: 60ch;
-    }
-
-    .join-actions {
-      display: grid;
-      gap: .75rem;
-    }
-
-    .join-actions .btn-cta {
-      appearance: none;
-      background: var(--accent-blue);
-      color: #fff;
-      text-align: center;
-      font-size: .9rem;
-      font-weight: 600;
-      line-height: 1.2;
-      padding: .9rem 1.2rem;
-      min-width: 200px;
-      border-radius: var(--radius-full);
-      box-shadow: 0 24px 32px rgba(0,59,142,.25);
-      border: 0;
-    }
-
-    .join-actions .note {
-      font-size: .7rem;
-      line-height: 1.4;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* LEADERSHIP */
-    .leaders-grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media(min-width: 700px){
-      .leaders-grid {
-        grid-template-columns: repeat(3,1fr);
-      }
-    }
-
-    .leader-card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: var(--radius-xl);
-      padding: 1.5rem 1.5rem 1.25rem;
-      box-shadow:
-        0 24px 40px -8px rgba(15,23,42,.08),
-        0 2px 4px rgba(15,23,42,.06);
-      text-align: center;
-    }
-
-    .leader-photo {
-      width: 72px;
-      height: 72px;
-      border-radius: var(--radius-full);
-      background: radial-gradient(circle at 30% 30%, #ffffff 0%, #cbd5e1 70%);
-      border: 2px solid var(--accent-red);
-      box-shadow: 0 16px 24px rgba(201,31,46,.25);
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--accent-red);
-    }
-
-    .leader-name {
-      font-size: .95rem;
-      line-height: 1.4;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .leader-role {
-      font-size: .75rem;
-      line-height: 1.4;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-top: .25rem;
-    }
-
-    .leader-desc {
-      font-size: .8rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin-top: .75rem;
-    }
-
-    /* CONTACT / FOOTER */
-    footer {
-      background: var(--bg-dark);
-      color: var(--text-light);
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-top: 4rem;
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 3rem 1.25rem 4rem;
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media(min-width: 800px){
-      .footer-inner {
-        grid-template-columns: 2fr 1fr;
-      }
-    }
-
-    .footer-brand h3 {
-      font-size: 1rem;
-      line-height: 1.4;
-      font-weight: 600;
-      color: #fff;
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-      align-items: baseline;
-    }
-
-    .footer-brand h3 span.small {
-      font-size: .7rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.7);
-    }
-
-    .footer-brand p {
-      font-size: .8rem;
-      line-height: 1.5;
-      color: rgba(255,255,255,.7);
-      margin-top: .75rem;
-      max-width: 60ch;
-    }
-
-    .footer-contact {
-      font-size: .8rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,.8);
-    }
-
-    .footer-contact h4 {
-      font-size: .8rem;
-      line-height: 1.4;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: .75rem;
-    }
-
-    .footer-contact a.mail {
-      color: var(--accent-gold);
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .footer-bottom {
-      font-size: .7rem;
-      color: rgba(255,255,255,.4);
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding: 1rem;
-    }
-
-    /* RESPONSIVE NAV SHOW/HIDE */
-    @media(max-width: 700px){
-      nav ul {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: inline-block;
-      }
-      .mobile-panel.show {
-        display: block;
-      }
+    .footer-bottom{
+      font-size:.7rem;
+      color:rgba(255,255,255,.4);
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:1rem;
+      margin-top:2rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / NAV -->
-  <header>
-    <div class="nav-shell">
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <div class="brand-text">
-          <div style="font-weight:600; line-height:1.2;">Y's Men / Y's Women Setúbal</div>
-          <div style="font-size:.7rem; line-height:1.2; color:rgba(255,255,255,.7); font-weight:500;">
-            Service • Fellowship • YMCA Partnership
-          </div>
+<!-- NAV / HEADER -->
+<header>
+  <div class="nav-shell">
+
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div class="brand-text">
+        <div style="font-weight:600; line-height:1.2;">
+          Y's Men / Y's Women Setúbal
+        </div>
+
+        <!-- tagline EN/PT -->
+        <div data-lang="en" style="font-size:.7rem; line-height:1.2; color:rgba(255,255,255,.7); font-weight:500;">
+          Service • Fellowship • YMCA Partnership
+        </div>
+        <div data-lang="pt" style="font-size:.7rem; line-height:1.2; color:rgba(255,255,255,.7); font-weight:500;">
+          Serviço • Companheirismo • Parceria YMCA
         </div>
       </div>
-
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#mission">Mission</a></li>
-          <li><a href="#projects">What We Do</a></li>
-          <li><a href="#join">Join Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNav">
-          Menu
-        </button>
-      </nav>
     </div>
 
-    <!-- MOBILE NAV -->
-    <div class="mobile-panel" id="mobileNav" aria-hidden="true">
+    <nav class="primary-nav" aria-label="Main navigation">
       <ul>
-        <li><a href="#about">About the Club</a></li>
-        <li><a href="#mission">Our Mission</a></li>
-        <li><a href="#projects">Community Impact</a></li>
-        <li><a href="#join">Become a Member</a></li>
-        <li><a href="#contact">Get in Touch</a></li>
+        <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="pt">Quem Somos</a></li>
+        <li><a href="#mission" data-lang="en">Mission</a><a href="#mission" data-lang="pt">Missão</a></li>
+        <li><a href="#projects" data-lang="en">What We Do</a><a href="#projects" data-lang="pt">O Que Fazemos</a></li>
+        <li><a href="#join" data-lang="en">Join Us</a><a href="#join" data-lang="pt">Junte-se a Nós</a></li>
+        <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="pt">Contacto</a></li>
       </ul>
+    </nav>
+
+    <div class="lang-switcher" aria-label="Language selector">
+      <button class="lang-btn" data-set-lang="en">EN</button>
+      <button class="lang-btn" data-set-lang="pt">PT</button>
     </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-pretitle">
+        <span class="tag" data-lang="en">New Club</span>
+        <span class="tag" data-lang="pt">Novo Clube</span>
+
+        <span data-lang="en">Setúbal, Portugal</span>
+        <span data-lang="pt">Setúbal, Portugal</span>
+      </div>
+
+      <h1 data-lang="en">
+        A fellowship of service and action,<br/>
+        building a better world <span class="accent">together.</span>
+      </h1>
+      <h1 data-lang="pt">
+        Uma fraternidade de serviço e ação,<br/>
+        a construir um mundo melhor <span class="accent">juntos.</span>
+      </h1>
+
+      <p class="hero-desc" data-lang="en">
+        We are Y's Men and Y's Women Setúbal — a service club supporting the YMCA and our local community.
+        We work across education, health, environment, and youth development, guided by the values of love,
+        compassion, selfless service, and sacrifice.
+      </p>
+      <p class="hero-desc" data-lang="pt">
+        Somos o Y's Men e Y's Women Setúbal — um clube de serviço que apoia a YMCA e a nossa comunidade local.
+        Atuamos nas áreas da educação, saúde, ambiente e desenvolvimento juvenil, guiados pelos valores de amor,
+        compaixão, serviço desinteressado e sacrifício.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="#join" data-lang="en">Join the movement</a>
+        <a class="btn-primary" href="#join" data-lang="pt">Junte-se ao movimento</a>
+
+        <a class="btn-outline" href="#projects" data-lang="en">See our projects</a>
+        <a class="btn-outline" href="#projects" data-lang="pt">Conheça os nossos projetos</a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-labelledby="cardTitle">
+      <h2 id="cardTitle" data-lang="en">Our Motto</h2>
+      <h2 id="cardTitle" data-lang="pt">O Nosso Lema</h2>
+
+      <p class="motto" data-lang="en">
+        "To Acknowledge the Duty that Accompanies Every Right"
+      </p>
+      <p class="motto" data-lang="pt">
+        “Reconhecer o Dever que Acompanha Cada Direito”
+      </p>
+
+      <p data-lang="en">
+        This motto challenges us to put responsibility before privilege — to serve first, act with integrity,
+        and lead by example in our families, our community, and our world.
+      </p>
+      <p data-lang="pt">
+        Este lema desafia-nos a colocar a responsabilidade antes do privilégio — a servir primeiro, agir com
+        integridade e liderar pelo exemplo nas nossas famílias, na comunidade e no mundo.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <header class="section-header">
+    <span class="eyebrow" data-lang="en">Who we are</span>
+    <span class="eyebrow" data-lang="pt">Quem Somos</span>
+
+    <h2 data-lang="en">Y's Men / Y's Women Setúbal</h2>
+    <h2 data-lang="pt">Y's Men / Y's Women Setúbal</h2>
+
+    <p class="lead" data-lang="en">
+      We are part of Y's Men International — a worldwide fellowship of people of all faiths working together
+      in mutual respect and affection, based on the teachings of Jesus Christ, and with a common loyalty
+      to the YMCA.
+    </p>
+    <p class="lead" data-lang="pt">
+      Fazemos parte do Y's Men International — uma fraternidade mundial de pessoas de todas as crenças,
+      que trabalham juntas em respeito e amizade, baseadas nos ensinamentos de Jesus Cristo e com uma
+      lealdade comum à YMCA.
+    </p>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-pretitle">
-          <span class="tag">New Club</span>
-          <span>Setúbal, Portugal</span>
-        </div>
+  <div class="about-grid">
+    <article class="about-card">
+      <div class="about-icon">🌍</div>
+      <h3 data-lang="en">Worldwide Movement</h3>
+      <h3 data-lang="pt">Movimento Mundial</h3>
 
-        <h1>
-          A fellowship of service and action,<br/>
-          building a better world
-          <span class="accent">together.</span>
-        </h1>
-
-        <p class="hero-desc">
-          We are Y's Men and Y's Women Setúbal — a service club supporting the YMCA
-          and our local community. We work across education, health, environment,
-          and youth development, guided by the values of love, compassion,
-          selfless service, and sacrifice. :contentReference[oaicite:0]{index=0}
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn-primary" href="#join">Join the movement</a>
-          <a class="btn-outline" href="#projects">See our projects</a>
-        </div>
-      </div>
-
-      <aside class="hero-card" aria-labelledby="cardTitle">
-        <h2 id="cardTitle">Our Motto</h2>
-        <p class="motto">
-          "To Acknowledge the Duty that Accompanies Every Right"
-        </p>
-        <div class="card-body">
-          This motto challenges us to put responsibility before privilege —
-          to serve first, to act with integrity, and to lead by example in our
-          families, our community, and our world. :contentReference[oaicite:1]{index=1}
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <header class="section-header">
-      <span class="eyebrow">Who we are</span>
-      <h2>Y's Men / Y's Women Setúbal</h2>
-      <p class="lead">
-        We are part of Y's Men International, a worldwide fellowship of people of all
-        faiths working together in mutual respect and affection, based on the teachings
-        of Jesus Christ, and with a common loyalty to the YMCA. :contentReference[oaicite:2]{index=2}
+      <p data-lang="en">
+        Y's Men International is active across multiple regions and continents, partnering with YMCAs to
+        support youth, families, and communities through direct service, leadership, and fundraising.
       </p>
-    </header>
-
-    <div class="about-grid">
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">🌍</div>
-        <h3>Worldwide Movement</h3>
-        <p>
-          Y's Men International is active across multiple regions and continents,
-          partnering with YMCAs to support youth, families, and communities through
-          direct service, leadership, and fundraising. :contentReference[oaicite:3]{index=3}
-        </p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">🤝</div>
-        <h3>Local Heart</h3>
-        <p>
-          Our Setúbal club focuses on real local needs: social inclusion, education,
-          health, and opportunities for young people. We collaborate with the YMCA
-          and other worthy organisations in our area. :contentReference[oaicite:4]{index=4}
-        </p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">✨</div>
-        <h3>Open Community</h3>
-        <p>
-          Membership is open to men and women. No one is denied because of race,
-          creed, colour, or national origin. We believe service and fellowship
-          should be inclusive. :contentReference[oaicite:5]{index=5}
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- MISSION / VALUES -->
-  <section class="section" id="mission">
-    <header class="section-header">
-      <span class="eyebrow">Mission & Values</span>
-      <h2>What we stand for</h2>
-      <p class="lead">
-        Our work is rooted in service, inspired by faith, and focused on people.
-        These are the principles every member commits to when joining the club:
+      <p data-lang="pt">
+        O Y's Men International está presente em vários continentes, em parceria com as YMCAs,
+        apoiando jovens, famílias e comunidades através de serviço direto, liderança
+        e angariação de fundos.
       </p>
-    </header>
+    </article>
 
-    <div class="about-grid">
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">❤️</div>
-        <h3>Love & Compassion</h3>
-        <p>
-          We act with love, compassion, selfless service, and sacrifice — these are
-          core values of Y's Men International, and they're reflected in the way we
-          show up for others. :contentReference[oaicite:6]{index=6}
-        </p>
-      </article>
+    <article class="about-card">
+      <div class="about-icon">🤝</div>
+      <h3 data-lang="en">Local Heart</h3>
+      <h3 data-lang="pt">Coração Local</h3>
 
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">⛪</div>
-        <h3>Inspired by Christ's Teaching</h3>
-        <p>
-          We acknowledge the teachings of Jesus Christ and aim to put those words
-          into action: in our decisions, in our projects, and in our personal lives. :contentReference[oaicite:7]{index=7}
-        </p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-icon" aria-hidden="true">🏛</div>
-        <h3>Duty Before Privilege</h3>
-        <p>
-          We challenge ourselves to focus less on “my rights” and more on
-          “my duty to others.” We believe leadership is service, not status. :contentReference[oaicite:8]{index=8}
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- PROJECTS / IMPACT -->
-  <section class="section" id="projects">
-    <header class="section-header">
-      <span class="eyebrow">Service in action</span>
-      <h2>What we do</h2>
-      <p class="lead">
-        We exist to serve. Every project is meant to make life better for someone
-        specific — a young person, a family, a community group. These are the core
-        objectives every Y's Men / Y's Women club commits to:
+      <p data-lang="en">
+        Our Setúbal club focuses on real local needs: social inclusion, education, health, and opportunities
+        for young people. We collaborate with the YMCA and other worthy organisations in our area.
       </p>
-    </header>
-
-    <div class="projects-wrapper">
-      <div class="projects-list">
-
-        <article class="project-item">
-          <h4>
-            Support the YMCA
-            <span class="badge">Core Mission</span>
-          </h4>
-          <p>
-            We function primarily as a service club for the YMCA — giving our
-            time, ideas, and resources to help it deliver youth programs, education,
-            sports, and character development. :contentReference[oaicite:9]{index=9}
-          </p>
-        </article>
-
-        <article class="project-item">
-          <h4>
-            Serve the Community
-            <span class="badge">Local Impact</span>
-          </h4>
-          <p>
-            We support other worthy organisations in Setúbal and the region:
-            health initiatives, education access, inclusion, dignity, and social
-            justice — always without party politics. :contentReference[oaicite:10]{index=10}
-          </p>
-        </article>
-
-        <article class="project-item">
-          <h4>
-            Build Fellowship
-            <span class="badge">People</span>
-          </h4>
-          <p>
-            We cultivate strong friendships and a culture of mutual support.
-            Service should be meaningful, but it should also be joyful and shared. :contentReference[oaicite:11]{index=11}
-          </p>
-        </article>
-
-        <article class="project-item">
-          <h4>
-            Grow Leaders
-            <span class="badge">Future</span>
-          </h4>
-          <p>
-            We develop, encourage and provide leadership — locally and
-            internationally — so that the next generation can carry the work
-            further than we did. :contentReference[oaicite:12]{index=12}
-          </p>
-        </article>
-
-      </div>
-
-      <aside class="projects-sidecard">
-        <h3>Why this matters</h3>
-        <p>
-          The YMCA is one of the world's most important movements for youth
-          development and social inclusion. Y's Men and Y's Women clubs
-          exist to stand beside it, strengthen it, and help it reach more people. :contentReference[oaicite:13]{index=13}
-        </p>
-
-        <div class="stats-row">
-          <div class="stat-box">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Volunteer-led</div>
-          </div>
-
-          <div class="stat-box">
-            <div class="stat-number">Global</div>
-            <div class="stat-label">Worldwide Fellowship</div>
-          </div>
-
-          <div class="stat-box">
-            <div class="stat-number">Local</div>
-            <div class="stat-label">Focused on Setúbal</div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- JOIN -->
-  <section class="section" id="join">
-    <header class="section-header">
-      <span class="eyebrow">Become a member</span>
-      <h2>Ready to get involved?</h2>
-      <p class="lead">
-        We are looking for committed, positive people who want to make a real
-        difference in Setúbal — people who care about youth, inclusion,
-        community, and service.
+      <p data-lang="pt">
+        O nosso clube de Setúbal centra-se nas necessidades locais: inclusão social, educação, saúde e
+        oportunidades para os jovens. Colaboramos com a YMCA e outras instituições meritórias da região.
       </p>
-    </header>
+    </article>
 
-    <div class="join-area">
-      <div class="join-text">
-        <h3>What it means to be a Y's Man / Y's Woman</h3>
-        <p>
-          You're not just “joining a club”. You're stepping into service.
-          You're saying yes to showing up, helping organise, supporting projects,
-          and living our values — idealism, initiative, and hard work in the name
-          of others. :contentReference[oaicite:14]{index=14}
-        </p>
-      </div>
+    <article class="about-card">
+      <div class="about-icon">✨</div>
+      <h3 data-lang="en">Open Community</h3>
+      <h3 data-lang="pt">Comunidade Aberta</h3>
 
-      <div class="join-actions">
-        <a class="btn-cta" href="#contact">Ask about membership</a>
-        <div class="note">
-          Minimum: show up, care, act. No “spectator members”.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="section" id="leadership">
-    <header class="section-header">
-      <span class="eyebrow">Leadership</span>
-      <h2>Club leadership 2025 / 2026</h2>
-      <p class="lead">
-        In our movement, leadership is considered a trust. Officers are expected to
-        lead with idealism, interest, initiative, and industry — and to put Y's Men
-        work first. :contentReference[oaicite:15]{index=15}
+      <p data-lang="en">
+        Membership is open to men and women of all backgrounds. We believe service and fellowship should
+        be inclusive.
       </p>
-    </header>
+      <p data-lang="pt">
+        A adesão está aberta a homens e mulheres de todas as origens. Acreditamos que o serviço e o
+        companheirismo devem ser inclusivos.
+      </p>
+    </article>
+  </div>
+</section>
 
-    <div class="leaders-grid">
+<!-- MISSION -->
+<section class="section" id="mission">
+  <header class="section-header">
+    <span class="eyebrow" data-lang="en">Mission & Values</span>
+    <span class="eyebrow" data-lang="pt">Missão e Valores</span>
 
-      <article class="leader-card">
-        <div class="leader-photo">PRES</div>
-        <div class="leader-name">[Name Here]</div>
-        <div class="leader-role">Club President</div>
-        <div class="leader-desc">
-          Represents the club, sets direction, and ensures our work truly serves
-          the YMCA and the local community.
-        </div>
-      </article>
+    <h2 data-lang="en">What we stand for</h2>
+    <h2 data-lang="pt">Em que acreditamos</h2>
 
-      <article class="leader-card">
-        <div class="leader-photo">VP</div>
-        <div class="leader-name">[Name Here]</div>
-        <div class="leader-role">Vice President</div>
-        <div class="leader-desc">
-          Drives projects, supports new members, and helps turn ideas into
-          action in Setúbal.
-        </div>
-      </article>
+    <p class="lead" data-lang="en">
+      Our work is rooted in service, inspired by faith, and focused on people. These are the principles every
+      member commits to when joining the club:
+    </p>
+    <p class="lead" data-lang="pt">
+      O nosso trabalho assenta no serviço, é inspirado pela fé e focado nas pessoas. Estes são os princípios
+      que cada membro assume ao juntar-se ao clube:
+    </p>
+  </header>
 
-      <article class="leader-card">
-        <div class="leader-photo">SEC</div>
-        <div class="leader-name">[Name Here]</div>
-        <div class="leader-role">Secretary / Treasurer</div>
-        <div class="leader-desc">
-          Keeps everything running: communication, planning, transparency,
-          reporting, and coordination with the wider movement.
-        </div>
-      </article>
+  <div class="about-grid">
+    <article class="about-card">
+      <div class="about-icon">❤️</div>
+      <h3 data-lang="en">Love & Compassion</h3>
+      <h3 data-lang="pt">Amor e Compaixão</h3>
 
+      <p data-lang="en">
+        We act with love, compassion, selfless service, and sacrifice — values that define how we show up for
+        others.
+      </p>
+      <p data-lang="pt">
+        Agimos com amor, compaixão, serviço desinteressado e espírito de sacrifício — valores que definem
+        a forma como servimos os outros.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <div class="about-icon">⛪</div>
+      <h3 data-lang="en">Inspired by Christ's Teaching</h3>
+      <h3 data-lang="pt">Inspirados por Cristo</h3>
+
+      <p data-lang="en">
+        We acknowledge the teachings of Jesus Christ and aim to put those words into action — in our
+        decisions, in our projects, and in our personal lives.
+      </p>
+      <p data-lang="pt">
+        Reconhecemos os ensinamentos de Jesus Cristo e procuramos colocá-los em prática — nas decisões,
+        nos projetos e na vida pessoal.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <div class="about-icon">🏛</div>
+      <h3 data-lang="en">Duty Before Privilege</h3>
+      <h3 data-lang="pt">Dever Antes do Privilégio</h3>
+
+      <p data-lang="en">
+        We challenge ourselves to focus less on “my rights” and more on “my duty to others.”
+        We believe leadership is service, not status.
+      </p>
+      <p data-lang="pt">
+        Desafiamos-nos a focar menos nos “meus direitos” e mais nos “meus deveres para com os outros”.
+        Acreditamos que liderar é servir, não dominar.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <header class="section-header">
+    <span class="eyebrow" data-lang="en">Service in action</span>
+    <span class="eyebrow" data-lang="pt">Serviço em ação</span>
+
+    <h2 data-lang="en">What we do</h2>
+    <h2 data-lang="pt">O que fazemos</h2>
+
+    <p class="lead" data-lang="en">
+      We exist to serve. Every project is meant to make life better for someone — a young person, a family,
+      a community group. These are our core objectives:
+    </p>
+    <p class="lead" data-lang="pt">
+      Existimos para servir. Cada projeto procura melhorar a vida de alguém — um jovem, uma família,
+      um grupo comunitário. Estes são os nossos principais objetivos:
+    </p>
+  </header>
+
+  <div class="about-grid">
+    <article class="about-card">
+      <div class="about-icon">🏫</div>
+      <h3 data-lang="en">Support the YMCA</h3>
+      <h3 data-lang="pt">Apoiar a YMCA</h3>
+
+      <p data-lang="en">
+        We function primarily as a service club for the YMCA — giving our time, ideas, and resources
+        to help it deliver youth programs, education, sports, and character development.
+      </p>
+      <p data-lang="pt">
+        Funcionamos sobretudo como clube de serviço da YMCA — oferecendo tempo, ideias e recursos
+        para apoiar programas de juventude, educação, desporto e formação de caráter.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <div class="about-icon">🌱</div>
+      <h3 data-lang="en">Serve the Community</h3>
+      <h3 data-lang="pt">Servir a Comunidade</h3>
+
+      <p data-lang="en">
+        We support worthy local organisations in Setúbal and the region: health initiatives, education access,
+        inclusion, and social justice — always without party politics.
+      </p>
+      <p data-lang="pt">
+        Apoiamos instituições e iniciativas locais em Setúbal e na região: saúde, educação, inclusão e justiça
+        social — sempre com independência política.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <div class="about-icon">🤗</div>
+      <h3 data-lang="en">Build Fellowship</h3>
+      <h3 data-lang="pt">Promover o Companheirismo</h3>
+
+      <p data-lang="en">
+        We cultivate strong friendships and a culture of mutual support. Service should be meaningful,
+        but it should also be joyful and shared.
+      </p>
+      <p data-lang="pt">
+        Cultivamos amizades fortes e um espírito de entreajuda. O serviço deve ser significativo,
+        mas também alegre e partilhado.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <div class="about-icon">🚀</div>
+      <h3 data-lang="en">Grow Leaders</h3>
+      <h3 data-lang="pt">Formar Líderes</h3>
+
+      <p data-lang="en">
+        We develop, encourage, and provide leadership — locally and internationally — so that the next
+        generation can carry this work even further.
+      </p>
+      <p data-lang="pt">
+        Desenvolvemos, encorajamos e promovemos liderança — local e internacional — para que a próxima
+        geração leve este trabalho ainda mais longe.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="section" id="join">
+  <header class="section-header">
+    <span class="eyebrow" data-lang="en">Become a member</span>
+    <span class="eyebrow" data-lang="pt">Torne-se membro</span>
+
+    <h2 data-lang="en">Ready to get involved?</h2>
+    <h2 data-lang="pt">Quer fazer parte?</h2>
+
+    <p class="lead" data-lang="en">
+      We are looking for committed, positive people who want to make a real difference in Setúbal —
+      people who care about youth, inclusion, community, and service.
+    </p>
+    <p class="lead" data-lang="pt">
+      Procuramos pessoas empenhadas e positivas que queiram fazer a diferença em Setúbal —
+      pessoas que acreditam nos jovens, na inclusão, na comunidade e no serviço.
+    </p>
+  </header>
+
+  <div class="about-card highlight">
+    <h3 data-lang="en">What it means to be a Y's Man / Y's Woman</h3>
+    <h3 data-lang="pt">O que significa ser Y's Man / Y's Woman</h3>
+
+    <p data-lang="en">
+      You're not just joining a club. You're stepping into service — saying yes to showing up, helping
+      organise, supporting projects, and living values of idealism, initiative, and hard work in the
+      name of others.
+    </p>
+    <p data-lang="pt">
+      Não se trata apenas de “entrar num clube”. É um compromisso de serviço — dizer sim a participar,
+      ajudar a organizar, apoiar projetos e viver valores de idealismo, iniciativa e dedicação ao próximo.
+    </p>
+
+    <p data-lang="en"><strong>Interested?</strong> <a href="#contact">Get in touch to learn more.</a></p>
+    <p data-lang="pt"><strong>Interessado?</strong> <a href="#contact">Contacte-nos para saber mais.</a></p>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3 data-lang="en">Y's Men / Y's Women Setúbal</h3>
+      <h3 data-lang="pt">Y's Men / Y's Women Setúbal</h3>
+
+      <p data-lang="en">
+        A service club in fellowship with the YMCA. We act locally in Setúbal and stand in solidarity
+        with clubs across Europe and around the world. Our purpose is simple: develop, encourage,
+        and provide leadership to build a better world for all.
+      </p>
+      <p data-lang="pt">
+        Um clube de serviço em fraternidade com a YMCA. Atuamos localmente em Setúbal e em solidariedade
+        com clubes em toda a Europa e no mundo. O nosso propósito é simples: desenvolver, encorajar e exercer
+        liderança para construir um mundo melhor para todos.
+      </p>
     </div>
-  </section>
 
-  <!-- CONTACT / FOOTER -->
-  <footer id="contact">
-    <div class="footer-inner">
+    <div class="footer-contact">
+      <h4 data-lang="en">Get in touch</h4>
+      <h4 data-lang="pt">Contacto</h4>
 
-      <div class="footer-brand">
-        <h3>
-          Y's Men / Y's Women Setúbal
-          <span class="small">Affiliated with Y's Men International</span>
-        </h3>
-        <p>
-          A service club in fellowship with the YMCA. We act locally in Setúbal,
-          and we stand in solidarity with clubs across Europe and around the world.
-          Our purpose is simple: develop, encourage and provide leadership to build
-          a better world for all. :contentReference[oaicite:16]{index=16}
-        </p>
-      </div>
+      <p data-lang="en">
+        Email: <a class="mail" href="mailto:info@ysmensetubal.org">info@ysmensetubal.org</a><br/>
+        Location: Setúbal, Portugal<br/>
+        Meeting rhythm: Monthly (working session + fellowship lunch)
+      </p>
+      <p data-lang="pt">
+        Email: <a class="mail" href="mailto:info@ysmensetubal.org">info@ysmensetubal.org</a><br/>
+        Localização: Setúbal, Portugal<br/>
+        Reuniões: Mensal (sessão de trabalho + almoço de convívio)
+      </p>
 
-      <div class="footer-contact">
-        <h4>Get in touch</h4>
-        <p>
-          Email: <a class="mail" href="mailto:info@ysmensetubal.org">info@ysmensetubal.org</a><br/>
-          Location: Setúbal, Portugal<br/>
-          Meeting rhythm: Monthly (working session + fellowship lunch)
-        </p>
-
-        <p style="margin-top:1rem;">
-          Interested in attending a meeting, proposing a partnership,
-          or inviting us to support a community project? Reach out.
-        </p>
-      </div>
-
+      <p data-lang="en" style="margin-top:1rem;">
+        Interested in attending a meeting, proposing a partnership, or inviting us to support a community project? Reach out.
+      </p>
+      <p data-lang="pt" style="margin-top:1rem;">
+        Quer assistir a uma reunião, propor uma parceria ou convidar-nos para apoiar um projeto comunitário? Fale connosco.
+      </p>
     </div>
+  </div>
 
-    <div class="footer-bottom">
-      © <span id="year"></span> Y's Men / Y's Women Setúbal. All rights reserved.
-    </div>
-  </footer>
+  <div class="footer-bottom">
+    © <span id="year"></span> Y's Men / Y's Women Setúbal.
+    <span data-lang="en">All rights reserved.</span>
+    <span data-lang="pt">Todos os direitos reservados.</span>
+  </div>
+</footer>
 
-  <script>
-    // dynamic year
-    document.getElementById("year").textContent = new Date().getFullYear();
+<script>
+  // set current year
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // mobile nav toggle
-    const menuBtn = document.getElementById("mobileMenuBtn");
-    const mobileNav = document.getElementById("mobileNav");
+  // language toggle
+  const rootEl = document.documentElement;
+  const langButtons = document.querySelectorAll(".lang-btn");
 
-    menuBtn.addEventListener("click", () => {
-      const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-      const next = !expanded;
-      menuBtn.setAttribute("aria-expanded", String(next));
-      mobileNav.classList.toggle("show", next);
-      mobileNav.setAttribute("aria-hidden", String(!next));
+  function setLang(lang) {
+    rootEl.setAttribute("data-active-lang", lang);
+    langButtons.forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-set-lang") === lang);
     });
-  </script>
+    // also update <html lang="..."> for accessibility/SEO
+    rootEl.setAttribute("lang", lang);
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-set-lang");
+      setLang(lang);
+    });
+  });
+
+  // initialize: default "en"
+  setLang("pt");
+</script>
+
 </body>
 </html>
