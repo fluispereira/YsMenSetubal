@@ -1149,185 +1149,43 @@
   </footer>
 
   <script>
-    const translations = {
-      en: {
-        brandTagline: "Service • Fellowship • YMCA Partnership",
-        navAbout: "About",
-        navMission: "Mission",
-        navProjects: "What We Do",
-        navJoin: "Join Us",
-        navContact: "Contact",
-        navMenu: "Menu",
-        mobileAbout: "About the Club",
-        mobileMission: "Our Mission",
-        mobileProjects: "Community Impact",
-        mobileJoin: "Become a Member",
-        mobileContact: "Get in Touch",
-        heroTag: "New Club",
-        heroLocation: "Setúbal, Portugal",
-        heroTitle: "A fellowship of service and action,<br/>building a better world <span class=\"accent\">together.</span>",
-        heroDescription: "We are Y’s Men and Y’s Women Setúbal — a service club supporting the YMCA and our local community. We work across education, health, environment, and youth development, guided by the values of love, compassion, selfless service, and sacrifice. :contentReference[oaicite:0]{index=0}",
-        heroJoinBtn: "Join the movement",
-        heroProjectsBtn: "See our projects",
-        mottoTitle: "Our Motto",
-        mottoQuote: "\"To Acknowledge the Duty that Accompanies Every Right\"",
-        mottoDescription: "This motto challenges us to put responsibility before privilege — to serve first, to act with integrity, and to lead by example in our families, our community, and our world. :contentReference[oaicite:1]{index=1}",
-        aboutEyebrow: "Who we are",
-        aboutTitle: "Y’s Men / Y’s Women Setúbal",
-        aboutLead: "We are part of Y’s Men International, a worldwide fellowship of people of all faiths working together in mutual respect and affection, based on the teachings of Jesus Christ, and with a common loyalty to the YMCA. :contentReference[oaicite:2]{index=2}",
-        aboutWorldwideTitle: "Worldwide Movement",
-        aboutWorldwideBody: "Y’s Men International is active across multiple regions and continents, partnering with YMCAs to support youth, families, and communities through direct service, leadership, and fundraising. :contentReference[oaicite:3]{index=3}",
-        aboutLocalTitle: "Local Heart",
-        aboutLocalBody: "Our Setúbal club focuses on real local needs: social inclusion, education, health, and opportunities for young people. We collaborate with the YMCA and other worthy organisations in our area. :contentReference[oaicite:4]{index=4}",
-        aboutOpenTitle: "Open Community",
-        aboutOpenBody: "Membership is open to men and women. No one is denied because of race, creed, colour, or national origin. We believe service and fellowship should be inclusive. :contentReference[oaicite:5]{index=5}",
-        missionEyebrow: "Mission &amp; Values",
-        missionTitle: "What we stand for",
-        missionLead: "Our work is rooted in service, inspired by faith, and focused on people. These are the principles every member commits to when joining the club:",
-        missionLoveTitle: "Love &amp; Compassion",
-        missionLoveBody: "We act with love, compassion, selfless service, and sacrifice — these are core values of Y’s Men International, and they’re reflected in the way we show up for others. :contentReference[oaicite:6]{index=6}",
-        missionChristTitle: "Inspired by Christ’s Teaching",
-        missionChristBody: "We acknowledge the teachings of Jesus Christ and aim to put those words into action: in our decisions, in our projects, and in our personal lives. :contentReference[oaicite:7]{index=7}",
-        missionDutyTitle: "Duty Before Privilege",
-        missionDutyBody: "We challenge ourselves to focus less on “my rights” and more on “my duty to others.” We believe leadership is service, not status. :contentReference[oaicite:8]{index=8}",
-        projectsEyebrow: "Service in action",
-        projectsTitle: "What we do",
-        projectsLead: "We exist to serve. Every project is meant to make life better for someone specific — a young person, a family, a community group. These are the core objectives every Y’s Men / Y’s Women club commits to:",
-        projectSupportTitle: "Support the YMCA",
-        projectSupportBadge: "Core Mission",
-        projectSupportBody: "We function primarily as a service club for the YMCA — giving our time, ideas, and resources to help it deliver youth programs, education, sports, and character development. :contentReference[oaicite:9]{index=9}",
-        projectCommunityTitle: "Serve the Community",
-        projectCommunityBadge: "Local Impact",
-        projectCommunityBody: "We support other worthy organisations in Setúbal and the region: health initiatives, education access, inclusion, dignity, and social justice — always without party politics. :contentReference[oaicite:10]{index=10}",
-        projectFellowshipTitle: "Build Fellowship",
-        projectFellowshipBadge: "People",
-        projectFellowshipBody: "We cultivate strong friendships and a culture of mutual support. Service should be meaningful, but it should also be joyful and shared. :contentReference[oaicite:11]{index=11}",
-        projectLeadersTitle: "Grow Leaders",
-        projectLeadersBadge: "Future",
-        projectLeadersBody: "We develop, encourage and provide leadership — locally and internationally — so that the next generation can carry the work further than we did. :contentReference[oaicite:12]{index=12}",
-        projectsWhyTitle: "Why this matters",
-        projectsWhyBody: "The YMCA is one of the world’s most important movements for youth development and social inclusion. Y’s Men and Y’s Women clubs exist to stand beside it, strengthen it, and help it reach more people. :contentReference[oaicite:13]{index=13}",
-        statVolunteerNumber: "100%",
-        statVolunteerLabel: "Volunteer-led",
-        statGlobalNumber: "Global",
-        statGlobalLabel: "Worldwide Fellowship",
-        statLocalNumber: "Local",
-        statLocalLabel: "Focused on Setúbal",
-        joinEyebrow: "Become a member",
-        joinTitle: "Ready to get involved?",
-        joinLead: "We are looking for committed, positive people who want to make a real difference in Setúbal — people who care about youth, inclusion, community, and service.",
-        joinMeaningTitle: "What it means to be a Y’s Man / Y’s Woman",
-        joinMeaningBody: "You’re not just “joining a club”. You’re stepping into service. You’re saying yes to showing up, helping organise, supporting projects, and living our values — idealism, initiative, and hard work in the name of others. :contentReference[oaicite:14]{index=14}",
-        joinAskBtn: "Ask about membership",
-        joinNote: "Minimum: show up, care, act. No “spectator members”.",
-        leadershipEyebrow: "Leadership",
-        leadershipTitle: "Club leadership 2025 / 2026",
-        leadershipLead: "In our movement, leadership is considered a trust. Officers are expected to lead with idealism, interest, initiative, and industry — and to put Y’s Men work first. :contentReference[oaicite:15]{index=15}",
-        leaderPresidentName: "[Name Here]",
-        leaderPresidentRole: "Club President",
-        leaderPresidentDesc: "Represents the club, sets direction, and ensures our work truly serves the YMCA and the local community.",
-        leaderViceName: "[Name Here]",
-        leaderViceRole: "Vice President",
-        leaderViceDesc: "Drives projects, supports new members, and helps turn ideas into action in Setúbal.",
-        leaderSecretaryName: "[Name Here]",
-        leaderSecretaryRole: "Secretary / Treasurer",
-        leaderSecretaryDesc: "Keeps everything running: communication, planning, transparency, reporting, and coordination with the wider movement.",
-        footerTitle: "Y’s Men / Y’s Women Setúbal <span class=\"small\">Affiliated with Y’s Men International</span>",
-        footerDescription: "A service club in fellowship with the YMCA. We act locally in Setúbal, and we stand in solidarity with clubs across Europe and around the world. Our purpose is simple: develop, encourage and provide leadership to build a better world for all. :contentReference[oaicite:16]{index=16}",
-        contactTitle: "Get in touch",
-        contactDetails: "Email: <a class=\"mail\" href=\"mailto:info@ysmensetubal.org\">info@ysmensetubal.org</a><br/>Location: Setúbal, Portugal<br/>Meeting rhythm: Monthly (working session + fellowship lunch)",
-        contactInvite: "Interested in attending a meeting, proposing a partnership, or inviting us to support a community project? Reach out.",
-        footerBottom: "© <span id=\"year\"></span> Y’s Men / Y’s Women Setúbal. All rights reserved."
-      },
-      pt: {
-        brandTagline: "Serviço • Convívio • Parceria com a YMCA",
-        navAbout: "Sobre",
-        navMission: "Missão",
-        navProjects: "O que fazemos",
-        navJoin: "Junta-te",
-        navContact: "Contacto",
-        navMenu: "Menu",
-        mobileAbout: "Sobre o Clube",
-        mobileMission: "A Nossa Missão",
-        mobileProjects: "Impacto na Comunidade",
-        mobileJoin: "Torna-te Membro",
-        mobileContact: "Fala Connosco",
-        heroTag: "Novo Clube",
-        heroLocation: "Setúbal, Portugal",
-        heroTitle: "Uma irmandade de serviço e ação,<br/>a construir um mundo melhor <span class=\"accent\">juntos.</span>",
-        heroDescription: "Somos os Y’s Men e Y’s Women Setúbal — um clube de serviço que apoia a YMCA e a nossa comunidade local. Trabalhamos em educação, saúde, ambiente e desenvolvimento juvenil, guiados pelos valores de amor, compaixão, serviço altruísta e sacrifício. :contentReference[oaicite:0]{index=0}",
-        heroJoinBtn: "Junta-te ao movimento",
-        heroProjectsBtn: "Conhece os nossos projetos",
-        mottoTitle: "O Nosso Lema",
-        mottoQuote: "«Reconhecer o Dever que Acompanha Cada Direito»",
-        mottoDescription: "Este lema desafia-nos a colocar a responsabilidade antes do privilégio — a servir em primeiro lugar, a agir com integridade e a liderar pelo exemplo nas nossas famílias, na comunidade e no mundo. :contentReference[oaicite:1]{index=1}",
-        aboutEyebrow: "Quem somos",
-        aboutTitle: "Y’s Men / Y’s Women Setúbal",
-        aboutLead: "Fazemos parte dos Y’s Men International, uma irmandade mundial de pessoas de todas as fés que trabalham juntas com respeito e afeto mútuos, baseadas nos ensinamentos de Jesus Cristo e com lealdade comum à YMCA. :contentReference[oaicite:2]{index=2}",
-        aboutWorldwideTitle: "Movimento Global",
-        aboutWorldwideBody: "Os Y’s Men International estão ativos em várias regiões e continentes, em parceria com as YMCAs para apoiar jovens, famílias e comunidades através de serviço direto, liderança e angariação de fundos. :contentReference[oaicite:3]{index=3}",
-        aboutLocalTitle: "Coração Local",
-        aboutLocalBody: "O nosso clube de Setúbal responde a necessidades reais: inclusão social, educação, saúde e oportunidades para os mais jovens. Colaboramos com a YMCA e com outras organizações de mérito na nossa área. :contentReference[oaicite:4]{index=4}",
-        aboutOpenTitle: "Comunidade Aberta",
-        aboutOpenBody: "A adesão está aberta a homens e mulheres. Ninguém é excluído por raça, credo, cor ou origem nacional. Acreditamos que o serviço e o convívio devem ser inclusivos. :contentReference[oaicite:5]{index=5}",
-        missionEyebrow: "Missão &amp; Valores",
-        missionTitle: "Em que acreditamos",
-        missionLead: "O nosso trabalho nasce do serviço, inspira-se na fé e concentra-se nas pessoas. Estes são os princípios que cada membro assume ao entrar no clube:",
-        missionLoveTitle: "Amor &amp; Compaixão",
-        missionLoveBody: "Agimos com amor, compaixão, serviço altruísta e sacrifício — valores centrais dos Y’s Men International, refletidos na forma como estamos presentes para os outros. :contentReference[oaicite:6]{index=6}",
-        missionChristTitle: "Inspirados no Ensino de Cristo",
-        missionChristBody: "Reconhecemos os ensinamentos de Jesus Cristo e procuramos pô-los em ação: nas nossas decisões, nos nossos projetos e na nossa vida pessoal. :contentReference[oaicite:7]{index=7}",
-        missionDutyTitle: "Dever Antes do Privilégio",
-        missionDutyBody: "Desafiamos a nós próprios a focar menos nos “meus direitos” e mais no “meu dever para com os outros”. Acreditamos que liderar é servir, não ter estatuto. :contentReference[oaicite:8]{index=8}",
-        projectsEyebrow: "Serviço em ação",
-        projectsTitle: "O que fazemos",
-        projectsLead: "Existimos para servir. Cada projeto procura melhorar a vida de alguém concreto — um jovem, uma família, um grupo comunitário. Estes são os objetivos centrais de qualquer clube Y’s Men / Y’s Women:",
-        projectSupportTitle: "Apoiar a YMCA",
-        projectSupportBadge: "Missão Central",
-        projectSupportBody: "Funcionamos sobretudo como clube de serviço da YMCA — oferecendo tempo, ideias e recursos para ajudar a entregar programas de juventude, educação, desporto e desenvolvimento de caráter. :contentReference[oaicite:9]{index=9}",
-        projectCommunityTitle: "Servir a Comunidade",
-        projectCommunityBadge: "Impacto Local",
-        projectCommunityBody: "Apoiamos outras organizações meritórias em Setúbal e na região: iniciativas de saúde, acesso à educação, inclusão, dignidade e justiça social — sempre sem partidarismo político. :contentReference[oaicite:10]{index=10}",
-        projectFellowshipTitle: "Construir Convívio",
-        projectFellowshipBadge: "Pessoas",
-        projectFellowshipBody: "Cultivamos amizades fortes e uma cultura de apoio mútuo. O serviço deve ser significativo, mas também alegre e partilhado. :contentReference[oaicite:11]{index=11}",
-        projectLeadersTitle: "Formar Líderes",
-        projectLeadersBadge: "Futuro",
-        projectLeadersBody: "Desenvolvemos, encorajamos e providenciamos liderança — local e internacionalmente — para que a próxima geração leve o trabalho mais longe do que nós. :contentReference[oaicite:12]{index=12}",
-        projectsWhyTitle: "Porque é importante",
-        projectsWhyBody: "A YMCA é um dos movimentos mais importantes do mundo para o desenvolvimento juvenil e a inclusão social. Os clubes Y’s Men e Y’s Women existem para estar ao seu lado, fortalecê-la e ajudá-la a chegar a mais pessoas. :contentReference[oaicite:13]{index=13}",
-        statVolunteerNumber: "100%",
-        statVolunteerLabel: "Liderado por voluntários",
-        statGlobalNumber: "Global",
-        statGlobalLabel: "Convívio Mundial",
-        statLocalNumber: "Local",
-        statLocalLabel: "Foco em Setúbal",
-        joinEyebrow: "Torna-te membro",
-        joinTitle: "Pronto para agir?",
-        joinLead: "Procuramos pessoas comprometidas e positivas que queiram fazer a diferença real em Setúbal — pessoas que se importem com a juventude, a inclusão, a comunidade e o serviço.",
-        joinMeaningTitle: "O que significa ser Y’s Man / Y’s Woman",
-        joinMeaningBody: "Não estás apenas a “entrar num clube”. Estás a assumir serviço. Dizes sim a aparecer, ajudar a organizar, apoiar projetos e viver os nossos valores — idealismo, iniciativa e trabalho árduo em nome dos outros. :contentReference[oaicite:14]{index=14}",
-        joinAskBtn: "Pergunta pela adesão",
-        joinNote: "Mínimo: aparecer, importar-se, agir. Não há membros “espectadores”.",
-        leadershipEyebrow: "Liderança",
-        leadershipTitle: "Direção do clube 2025 / 2026",
-        leadershipLead: "No nosso movimento, a liderança é um voto de confiança. Espera-se que os dirigentes liderem com idealismo, interesse, iniciativa e trabalho — e que ponham o trabalho Y’s Men em primeiro lugar. :contentReference[oaicite:15]{index=15}",
-        leaderPresidentName: "[Nome aqui]",
-        leaderPresidentRole: "Presidente do Clube",
-        leaderPresidentDesc: "Representa o clube, define a direção e garante que o nosso trabalho serve verdadeiramente a YMCA e a comunidade local.",
-        leaderViceName: "[Nome aqui]",
-        leaderViceRole: "Vice-Presidente",
-        leaderViceDesc: "Dinamiza projetos, apoia novos membros e ajuda a transformar ideias em ação em Setúbal.",
-        leaderSecretaryName: "[Nome aqui]",
-        leaderSecretaryRole: "Secretário / Tesoureiro",
-        leaderSecretaryDesc: "Mantém tudo a funcionar: comunicação, planeamento, transparência, relatórios e ligação com o movimento alargado.",
-        footerTitle: "Y’s Men / Y’s Women Setúbal <span class=\"small\">Afiliação aos Y’s Men International</span>",
-        footerDescription: "Um clube de serviço em comunhão com a YMCA. Atuamos localmente em Setúbal e estamos em solidariedade com clubes em toda a Europa e no mundo. O nosso propósito é simples: desenvolver, encorajar e fornecer liderança para construir um mundo melhor para todos. :contentReference[oaicite:16]{index=16}",
-        contactTitle: "Fala connosco",
-        contactDetails: "Email: <a class=\"mail\" href=\"mailto:info@ysmensetubal.org\">info@ysmensetubal.org</a><br/>Localização: Setúbal, Portugal<br/>Ritmo de reuniões: Mensal (sessão de trabalho + almoço de convívio)",
-        contactInvite: "Queres participar numa reunião, propor uma parceria ou convidar-nos a apoiar um projeto comunitário? Fala connosco.",
-        footerBottom: "© <span id=\"year\"></span> Y’s Men / Y’s Women Setúbal. Todos os direitos reservados."
+    const translationUrls = {
+      en: "content/en.json",
+      pt: "content/pt.json"
+    };
+
+    const translations = {};
+    const translationPromises = {};
+
+    const ensureLanguage = async (lang) => {
+      if (translations[lang]) {
+        return translations[lang];
       }
+
+      const url = translationUrls[lang];
+      if (!url) {
+        throw new Error(`No translation file configured for "${lang}"`);
+      }
+
+      if (!translationPromises[lang]) {
+        translationPromises[lang] = fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Failed to load translations for "${lang}" (status ${response.status})`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            translations[lang] = data;
+            return data;
+          })
+          .catch((error) => {
+            delete translationPromises[lang];
+            throw error;
+          });
+      }
+
+      return translationPromises[lang];
     };
 
     const storageKey = "ysmen-lang";
@@ -1350,6 +1208,10 @@
 
     const applyLanguage = (lang) => {
       const dictionary = translations[lang] || translations.en;
+      if (!dictionary) {
+        return;
+      }
+
       document.querySelectorAll("[data-l10n-key]").forEach((element) => {
         const key = element.getAttribute("data-l10n-key");
         const translation = dictionary[key];
@@ -1357,6 +1219,7 @@
           element.innerHTML = translation;
         }
       });
+
       document.documentElement.setAttribute("lang", lang);
       if (canUseStorage) {
         window.localStorage.setItem(storageKey, lang);
@@ -1366,17 +1229,53 @@
 
     updateYear();
 
-    const storedLang = canUseStorage ? window.localStorage.getItem(storageKey) : null;
-    const initialLang = storedLang && translations[storedLang] ? storedLang : "en";
-    applyLanguage(initialLang);
-    setActiveLanguageButton(initialLang);
+    const initLanguage = async () => {
+      const storedLang = canUseStorage ? window.localStorage.getItem(storageKey) : null;
+      let initialLang = storedLang && translationUrls[storedLang] ? storedLang : "en";
+
+      try {
+        await ensureLanguage(initialLang);
+      } catch (error) {
+        console.error(`Error loading translations for "${initialLang}"`, error);
+        initialLang = "en";
+        if (!translations.en) {
+          try {
+            await ensureLanguage("en");
+          } catch (fallbackError) {
+            console.error('Error loading fallback translations for "en"', fallbackError);
+            return;
+          }
+        }
+      }
+
+      applyLanguage(initialLang);
+      setActiveLanguageButton(initialLang);
+    };
+
+    initLanguage();
 
     document.querySelectorAll(".lang-btn").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", async () => {
         const lang = button.getAttribute("data-lang");
-        if (lang && translations[lang]) {
+        if (!lang || !translationUrls[lang]) {
+          return;
+        }
+
+        try {
+          await ensureLanguage(lang);
           applyLanguage(lang);
           setActiveLanguageButton(lang);
+        } catch (error) {
+          console.error(`Error switching language to "${lang}"`, error);
+          if (lang !== "en") {
+            try {
+              await ensureLanguage("en");
+              applyLanguage("en");
+              setActiveLanguageButton("en");
+            } catch (fallbackError) {
+              console.error('Error loading fallback translations for "en"', fallbackError);
+            }
+          }
         }
       });
     });
