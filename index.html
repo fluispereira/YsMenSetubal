@@ -76,29 +76,20 @@
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: radial-gradient(circle at 30% 30%, var(--accent-gold) 0%, #704f00 60%);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 700;
-      line-height: 40px;
-      text-align: center;
+      width: 54px;
+      height: 54px;
       border-radius: var(--radius-lg);
-      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,.3);
       box-shadow: 0 12px 24px rgba(0,0,0,.6);
+      flex-shrink: 0;
     }
 
-    .brand-logo:after {
-      content: "Y";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Arial Black", Impact, system-ui, sans-serif;
-      color: var(--bg-dark);
-      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     nav ul {
@@ -716,7 +707,9 @@
   <header>
     <div class="nav-shell">
       <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-logo">
+          <img src="logo.jpg" alt="Y’s Men / Y’s Women Setúbal logo" />
+        </div>
         <div class="brand-text">
           <div style="font-weight:600; line-height:1.2;">Y’s Men / Y’s Women Setúbal</div>
           <div style="font-size:.7rem; line-height:1.2; color:rgba(255,255,255,.7); font-weight:500;">
