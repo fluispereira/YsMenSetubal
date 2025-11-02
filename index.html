@@ -19,11 +19,14 @@
       --radius-lg:.75rem;
       --radius-full:999px;
       --max-width:1200px;
-      --sticky-offset:160px;
+      --sticky-offset:160px; /* Default sticky offset */
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-padding-top:var(--sticky-offset);scroll-behavior:smooth}
+    html {
+      scroll-padding-top: var(--sticky-offset); /* Apply global scroll padding */
+      scroll-behavior: smooth;
+    }
     body{
       font-family:system-ui,-apple-system,"Inter",Roboto,"Helvetica Neue",Arial,sans-serif;
       background:var(--bg-light);
@@ -898,7 +901,7 @@
 
   function updateStickyOffset() {
     if (!headerEl) return 0;
-    const offset = headerEl.offsetHeight + 16;
+    const offset = headerEl.offsetHeight + 16; // Add some margin for spacing
     rootEl.style.setProperty("--sticky-offset", `${offset}px`);
     headerOffset = offset;
     return offset;
@@ -921,10 +924,9 @@
     });
   });
 
-  // initialize: default "en"
-  setLang("pt");
+  setLang("pt"); // Initialize default language
   window.addEventListener("resize", updateStickyOffset);
-
+  
   // offset scrolling for sticky header on in-page nav
   const hashLinks = document.querySelectorAll("a[href^='#']");
 
