@@ -76,8 +76,8 @@
     }
 
     .brand-logo {
-      width: 54px;
-      height: 54px;
+      width: 108px;
+      height: 108px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 2px solid rgba(255,255,255,.3);
@@ -740,6 +740,31 @@
       padding: 1rem;
     }
 
+    /* SETUBAL GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow:
+        0 24px 40px -8px rgba(15,23,42,.08),
+        0 2px 4px rgba(15,23,42,.06);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      display: block;
+    }
+
     /* RESPONSIVE NAV SHOW/HIDE */
     @media(max-width: 700px){
       nav ul {
@@ -849,6 +874,23 @@
           families, our community, and our world. :contentReference[oaicite:1]{index=1}
         </div>
       </aside>
+    </div>
+  </section>
+
+  <!-- SETUBAL PHOTOS -->
+  <section class="section" id="setubal">
+    <header class="section-header">
+      <span class="eyebrow">Our City</span>
+      <h2>Setúbal in pictures</h2>
+      <p class="lead">A glimpse of our beautiful home by the sea.</p>
+    </header>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <img src="images/setubal-hd.jpg" alt="Setúbal coastline at sunset" loading="lazy" />
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/Set�bal-Ba�a-Noite.jpg" alt="Setúbal bay at night" loading="lazy" />
+      </figure>
     </div>
   </section>
 
